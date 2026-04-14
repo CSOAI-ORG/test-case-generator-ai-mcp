@@ -1,20 +1,40 @@
 {
   "name": "test-case-generator-ai-mcp",
-  "description": "MEOK AI Labs \u2014 test-case-generator-ai-mcp \u2014 Generate unit tests from functions.",
-  "vendor": "MEOK AI Labs",
-  "homepage": "https://meok.ai",
-  "repository": "https://github.com/CSOAI-ORG/test-case-generator-ai-mcp",
-  "runtime": "python",
-  "entrypoint": "server.py",
+  "description": "test-case-generator-ai-mcp \u2014 Generate unit tests from functions.",
+  "version": "1.0.0",
   "tools": [
-    "run"
-  ],
-  "categories": [
-    "Testing",
-    "Developer Tools"
-  ],
-  "pricing": {
-    "free": "50 calls/day",
-    "pro": "$9/mo"
-  }
+    {
+      "name": "generate_test_cases",
+      "description": "",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "function_signature": {
+            "type": "string"
+          },
+          "num_cases": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "function_signature"
+        ]
+      }
+    },
+    {
+      "name": "edge_case_finder",
+      "description": "",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "function_signature": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "function_signature"
+        ]
+      }
+    }
+  ]
 }

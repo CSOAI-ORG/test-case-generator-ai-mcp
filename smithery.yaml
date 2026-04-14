@@ -1,10 +1,19 @@
 name: test-case-generator-ai-mcp
-description: "MEOK AI Labs — test-case-generator-ai-mcp — Generate unit tests from functions."
-vendor: MEOK AI Labs
-homepage: https://meok.ai
-repository: https://github.com/CSOAI-ORG/test-case-generator-ai-mcp
-license: MIT
-categories: [Testing, Developer Tools]
-tags: [test-generation, unit-testing, test-automation, qa, test-coverage]
-runtime: python
-entrypoint: server.py
+description: "test-case-generator-ai-mcp \u2014 Generate unit tests from functions."
+version: 1.0.0
+tools:
+- name: generate_test_cases
+  description: ''
+  parameters:
+  - name: function_signature
+    type: string
+    required: true
+  - name: num_cases
+    type: integer
+    required: false
+- name: edge_case_finder
+  description: ''
+  parameters:
+  - name: function_signature
+    type: string
+    required: true

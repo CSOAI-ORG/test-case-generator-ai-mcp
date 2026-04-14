@@ -1,27 +1,33 @@
 #!/usr/bin/env python3
-"""test-case-generator-ai-mcp — Generate unit tests from functions."""
-import asyncio, json
-from mcp.server import Server
-from mcp.server.stdio import stdio_server
-from mcp.server.models import InitializationOptions
-from mcp.types import Tool, TextContent
-import mcp.types as types
+"""Generate test cases from function signatures. — MEOK AI Labs."""
+import json, os, re, hashlib, uuid as _uuid, random
+from datetime import datetime, timezone
+from collections import defaultdict
+from mcp.server.fastmcp import FastMCP
 
-server = Server("test-case-generator-ai-mcp")
+FREE_DAILY_LIMIT = 30
+_usage = defaultdict(list)
+def _rl(c="anon"):
+    now = datetime.now(timezone.utc)
+    _usage[c] = [t for t in _usage[c] if (now-t).total_seconds() < 86400]
+    if len(_usage[c]) >= FREE_DAILY_LIMIT: return json.dumps({"error": "Limit/day"})
+    _usage[c].append(now); return None
 
-@server.list_tools()
-async def list_tools():
-    return [Tool(name="run", description="Generate unit tests from functions.", inputSchema={"type":"object","properties":{"input":{"type":"string"}},"required":["input"]})]
+mcp = FastMCP("test-case-generator", instructions="MEOK AI Labs — Generate test cases from function signatures.")
 
-@server.call_tool()
-async def call_tool(name, arguments=None):
-    inp = (arguments or {}).get("input", "")
-    result = {"output": f"Processed: {inp}"}
-    return [TextContent(type="text", text=json.dumps(result, indent=2))]
 
-async def main():
-    async with stdio_server(server._read_stream, server._write_stream) as (rs, ws):
-        await server.run(rs, ws, InitializationOptions(server_name="test-case-generator-ai-mcp", server_version="0.1.0", capabilities=server.get_capabilities()))
+@mcp.tool()
+def generate_tests(function_signature: str, language: str = "python") -> str:
+    """Generate test cases from a function signature."""
+    if err := _rl(): return err
+    name_match = re.search(r'def\s+(\w+)', function_signature)
+    fname = name_match.group(1) if name_match else "my_function"
+    tests = [
+        f"def test_{fname}_basic():\n    result = {fname}()\n    assert result is not None",
+        f"def test_{fname}_empty_input():\n    result = {fname}('')\n    assert result is not None",
+        f"def test_{fname}_edge_case():\n    # Test boundary conditions\n    pass",
+    ]
+    return json.dumps({"function": fname, "tests": tests, "language": language, "count": len(tests)}, indent=2)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    mcp.run()

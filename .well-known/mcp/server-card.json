@@ -1,0 +1,53 @@
+{
+  "name": "test-case-generator-ai",
+  "description": "Test case generation and coverage analysis by MEOK AI Labs.",
+  "version": "1.0.0",
+  "protocol_version": "2025-11-25",
+  "publisher": {
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "email": "nicholas@meok.ai"
+  },
+  "repository": "https://github.com/CSOAI-ORG/test-case-generator-ai-mcp",
+  "license": "MIT",
+  "transport": [
+    "stdio",
+    "streamable-http"
+  ],
+  "authentication": {
+    "type": "api-key",
+    "free_tier": true,
+    "free_limit": "15 calls/day"
+  },
+  "tools": [
+    {
+      "name": "generate_test_cases",
+      "description": "Generate test cases for a function based on its signature and parameter types."
+    },
+    {
+      "name": "generate_edge_cases",
+      "description": "Generate edge cases and boundary conditions for a function."
+    },
+    {
+      "name": "generate_test_matrix",
+      "description": "Generate a combinatorial test matrix from parameter value sets."
+    },
+    {
+      "name": "assess_coverage",
+      "description": "Assess test coverage gaps for a function given existing test descriptions."
+    }
+  ],
+  "categories": [
+    "AI & Machine Learning",
+    "Developer Tools"
+  ],
+  "pricing": {
+    "free": {
+      "calls_per_day": 15
+    },
+    "pro": {
+      "price": "$29/month",
+      "url": "https://meok.ai/pricing"
+    }
+  }
+}

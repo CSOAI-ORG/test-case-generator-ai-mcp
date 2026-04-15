@@ -65,11 +65,11 @@ _EDGE_PATTERNS = {
 }
 
 
-mcp = FastMCP("test-case-generator-ai-mcp", instructions="Test case generation and coverage analysis by MEOK AI Labs.")
+mcp = FastMCP("test-case-generator-ai", instructions="Test case generation and coverage analysis by MEOK AI Labs.")
 
 
-@mcp.tool(name="generate_test_cases")
-async def generate_test_cases(function_signature: str, num_cases: int = 5, api_key: str = "") -> dict:
+@mcp.tool()
+def generate_test_cases(function_signature: str, num_cases: int = 5, api_key: str = "") -> dict:
     """Generate test cases for a function based on its signature and parameter types."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -102,8 +102,8 @@ async def generate_test_cases(function_signature: str, num_cases: int = 5, api_k
     }
 
 
-@mcp.tool(name="generate_edge_cases")
-async def generate_edge_cases(function_signature: str, api_key: str = "") -> dict:
+@mcp.tool()
+def generate_edge_cases(function_signature: str, api_key: str = "") -> dict:
     """Generate edge cases and boundary conditions for a function."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -153,8 +153,8 @@ async def generate_edge_cases(function_signature: str, api_key: str = "") -> dic
     }
 
 
-@mcp.tool(name="generate_test_matrix")
-async def generate_test_matrix(function_signature: str, parameters_values: dict = None, api_key: str = "") -> dict:
+@mcp.tool()
+def generate_test_matrix(function_signature: str, parameters_values: dict = None, api_key: str = "") -> dict:
     """Generate a combinatorial test matrix from parameter value sets."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -212,8 +212,8 @@ async def generate_test_matrix(function_signature: str, parameters_values: dict 
     }
 
 
-@mcp.tool(name="assess_coverage")
-async def assess_coverage(function_signature: str, existing_tests: list = None, api_key: str = "") -> dict:
+@mcp.tool()
+def assess_coverage(function_signature: str, existing_tests: list = None, api_key: str = "") -> dict:
     """Assess test coverage gaps for a function given existing test descriptions."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:

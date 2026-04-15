@@ -22,3 +22,6 @@ Repository = "https://github.com/CSOAI-ORG/test-case-generator-ai-mcp"
 [tool.hatch.build.targets.wheel]
 packages = ["."]
 only-include = ["server.py"]
+
+[project.scripts]
+test_case_generator_ai_mcp = "server:main"

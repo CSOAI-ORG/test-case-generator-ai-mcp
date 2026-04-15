@@ -1,9 +1,10 @@
 name: test-case-generator-ai-mcp
-description: "test-case-generator-ai-mcp \u2014 Generate unit tests from functions."
+description: Test case generation and coverage analysis by MEOK AI Labs.
 version: 1.0.0
 tools:
 - name: generate_test_cases
-  description: ''
+  description: Generate test cases for a function based on its signature and parameter
+    types.
   parameters:
   - name: function_signature
     type: string
@@ -11,9 +12,27 @@ tools:
   - name: num_cases
     type: integer
     required: false
-- name: edge_case_finder
-  description: ''
+- name: generate_edge_cases
+  description: Generate edge cases and boundary conditions for a function.
   parameters:
   - name: function_signature
     type: string
     required: true
+- name: generate_test_matrix
+  description: Generate a combinatorial test matrix from parameter value sets.
+  parameters:
+  - name: function_signature
+    type: string
+    required: true
+  - name: parameters_values
+    type: object
+    required: false
+- name: assess_coverage
+  description: Assess test coverage gaps for a function given existing test descriptions.
+  parameters:
+  - name: function_signature
+    type: string
+    required: true
+  - name: existing_tests
+    type: array
+    required: false

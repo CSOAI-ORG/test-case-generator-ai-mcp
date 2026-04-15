@@ -1,11 +1,11 @@
 {
   "name": "test-case-generator-ai-mcp",
-  "description": "test-case-generator-ai-mcp \u2014 Generate unit tests from functions.",
+  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Test case generation and coverage analysis by MEOK AI Labs.",
   "version": "1.0.0",
   "tools": [
     {
       "name": "generate_test_cases",
-      "description": "",
+      "description": "Generate test cases for a function based on its signature and parameter types.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -22,13 +22,49 @@
       }
     },
     {
-      "name": "edge_case_finder",
-      "description": "",
+      "name": "generate_edge_cases",
+      "description": "Generate edge cases and boundary conditions for a function.",
       "parameters": {
         "type": "object",
         "properties": {
           "function_signature": {
             "type": "string"
+          }
+        },
+        "required": [
+          "function_signature"
+        ]
+      }
+    },
+    {
+      "name": "generate_test_matrix",
+      "description": "Generate a combinatorial test matrix from parameter value sets.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "function_signature": {
+            "type": "string"
+          },
+          "parameters_values": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "function_signature"
+        ]
+      }
+    },
+    {
+      "name": "assess_coverage",
+      "description": "Assess test coverage gaps for a function given existing test descriptions.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "function_signature": {
+            "type": "string"
+          },
+          "existing_tests": {
+            "type": "array"
           }
         },
         "required": [

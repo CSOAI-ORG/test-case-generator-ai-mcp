@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Test case generation and coverage analysis — MEOK AI Labs."""
 import sys, os
-sys.path.insert(0, os.path.expanduser('~/clawd/meok-labs-engine/shared'))
 from auth_middleware import check_access
 
 import json
@@ -10,6 +9,15 @@ import hashlib
 from datetime import datetime, timezone
 from collections import defaultdict
 from mcp.server.fastmcp import FastMCP
+
+STRIPE_199 = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
+
+def _add_upgrade_tail(response, tier="free"):
+    """Append upgrade nudge to free-tier success responses."""
+    if isinstance(response, dict) and tier == "free":
+        response["_upgrade_note"] = "Pro tier: unlimited calls + priority support. Upgrade: " + STRIPE_199
+    return response
+
 
 FREE_DAILY_LIMIT = 15
 _usage = defaultdict(list)
@@ -73,7 +81,7 @@ def generate_test_cases(function_signature: str, num_cases: int = 5, api_key: st
     """Generate test cases for a function based on its signature and parameter types."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(api_key or "anon"):
         return err
 
@@ -107,7 +115,7 @@ def generate_edge_cases(function_signature: str, api_key: str = "") -> dict:
     """Generate edge cases and boundary conditions for a function."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(api_key or "anon"):
         return err
 
@@ -158,7 +166,7 @@ def generate_test_matrix(function_signature: str, parameters_values: dict = None
     """Generate a combinatorial test matrix from parameter value sets."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(api_key or "anon"):
         return err
 
@@ -217,7 +225,7 @@ def assess_coverage(function_signature: str, existing_tests: list = None, api_ke
     """Assess test coverage gaps for a function given existing test descriptions."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(api_key or "anon"):
         return err
 
@@ -261,5 +269,8 @@ def assess_coverage(function_signature: str, existing_tests: list = None, api_ke
     }
 
 
-if __name__ == "__main__":
+def main():
     mcp.run()
+
+if __name__ == '__main__':
+    main()

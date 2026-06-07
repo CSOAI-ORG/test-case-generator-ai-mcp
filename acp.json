@@ -1,0 +1,22 @@
+{
+  "acpVersion": "0.1",
+  "agent": {
+    "name": "test-case-generator-ai-mcp",
+    "description": "AI-powered test case generator ai MCP server for agents. Supports generate test cases, generate",
+    "version": "1.0.5",
+    "provider": "MEOK AI Labs",
+    "interfaces": [
+      {
+        "type": "mcp",
+        "transport": "stdio",
+        "package": "test-case-generator-ai-mcp"
+      }
+    ],
+    "capabilities": [
+      "generate_test_cases",
+      "generate_edge_cases",
+      "generate_test_matrix",
+      "assess_coverage"
+    ]
+  }
+}

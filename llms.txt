@@ -1,31 +1,33 @@
-# Test Case Generator Ai MCP
-
-> Test case generation and coverage analysis by MEOK AI Labs
-
-`test-case-generator-ai-mcp` is a Model Context Protocol (MCP) server by MEOK AI Labs.
+# test-case-generator-ai-mcp
+# > By [MEOK AI Labs](https://meok.ai) — Test case generation and coverage analysis by MEOK AI Labs.
 
 ## Install
-
 ```bash
 pip install test-case-generator-ai-mcp
 ```
 
-Or run without installing:
-
-```bash
-uvx test-case-generator-ai-mcp
-```
+## Auth & Rate Limits
+- Free tier: 10 calls/day. No API key required.
+- Pro tier (£79/mo): unlimited + signed attestations.
+- Enterprise (£1,499/mo): white-label.
 
 ## Tools
 
-- `generate_test_cases` — Generate test cases for a function based on its signature and parameter types.
-- `generate_edge_cases` — Generate edge cases and boundary conditions for a function.
-- `generate_test_matrix` — Generate a combinatorial test matrix from parameter value sets.
-- `assess_coverage` — Assess test coverage gaps for a function given existing test descriptions.
+### `generate_test_cases`
+Generate test cases for a function based on its signature and parameter types.
 
-## Links
+### `generate_edge_cases`
+Generate edge cases and boundary conditions for a function.
 
-- Source: https://github.com/CSOAI-ORG/test-case-generator-ai-mcp
-- PyPI: https://pypi.org/project/test-case-generator-ai-mcp/
-- MEOK AI Labs: https://meok.ai
-- Council of AI: https://councilof.ai
+### `generate_test_matrix`
+Generate a combinatorial test matrix from parameter value sets.
+
+### `assess_coverage`
+Assess test coverage gaps for a function given existing test descriptions.
+
+
+## Maintainer
+MEOK AI Labs · hello@meok.ai · https://meok.ai · MIT licensed
+
+## Pairs with
+Governance moat: pair this tool with any of MEOK's 38 governance MCPs (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, etc.) for full compliance coverage.

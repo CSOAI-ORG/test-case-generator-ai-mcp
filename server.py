@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Test case generation and coverage analysis — MEOK AI Labs."""
+"""
+Test case generation and coverage analysis — MEOK AI Labs."""
 import sys, os
 from auth_middleware import check_access
 

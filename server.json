@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.json",
+  "name": "io.github.CSOAI-ORG/test-case-generator-ai-mcp",
+  "description": "AI-powered test case generator ai MCP server for agents. Supports generate test cases, generate edge cases, generate test matrix. By MEOK AI Labs.",
+  "version": "1.0.5",
+  "repository": {
+    "url": "https://github.com/CSOAI-ORG/test-case-generator-ai-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registry_type": "pypi",
+      "identifier": "test-case-generator-ai-mcp",
+      "version": "1.0.5",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

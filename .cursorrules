@@ -1,0 +1,9 @@
+# test-case-generator-ai-mcp - Auto-trigger Rules
+
+When the user asks about test case generator, use test-case-generator-ai-mcp tools: generate_test_cases, generate_edge_cases, generate_test_matrix, assess_coverage
+
+> By [MEOK AI Labs](https://meok.ai) — Test case generation and coverage analysis by MEOK AI Labs.
+
+Install: `pip install test-case-generator-ai-mcp`
+
+By MEOK AI Labs — MIT licensed.

@@ -1,0 +1,25 @@
+{
+  "name": "test-case-generator-ai-mcp",
+  "title": "Test Case Generator Ai Mcp",
+  "description": "AI-powered test case generator ai MCP server for agents. Supports generate test cases, generate edge cases, generate test matrix. By MEOK AI Labs.",
+  "version": "1.0.5",
+  "homepage": "https://meok.ai",
+  "license": "MIT",
+  "transport": {
+    "type": "stdio"
+  },
+  "tools": [
+    {
+      "name": "generate_test_cases"
+    },
+    {
+      "name": "generate_edge_cases"
+    },
+    {
+      "name": "generate_test_matrix"
+    },
+    {
+      "name": "assess_coverage"
+    }
+  ]
+}
